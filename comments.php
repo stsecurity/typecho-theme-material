@@ -158,6 +158,7 @@
                     </div>
 
                     <!-- Submit comment content button -->
+                    <?php SimpleCommentCaptcha_Plugin::outputSimpleCommentCaptchaField(); ?> <!-- SimpleCommentCaptcha -->
                     <?php $comments->reply('
                     <button id="comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
