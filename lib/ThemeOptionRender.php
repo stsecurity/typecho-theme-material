@@ -54,6 +54,12 @@ class Render {
         }
         $string .= "</ul>";
         $string .= ($description !== NULL) ? $description . "<br>" : NULL;
+        if ($display === NULL) {
+            $display = '';
+        }
+        if ($description === NULL) {
+            $description = '';
+        }
         $$name = new Typecho_Widget_Helper_Form_Element_Radio($name, $options, $default, _t($display), _t($description));
         $this->form->addInput($$name);
         return $string;
@@ -76,6 +82,15 @@ class Render {
         $floatingLabel = ($userOption == "") ? " mdui-textfield-floating-label" : NULL;
         $string .= '<div class="mdui-textfield"><label class="mdui-textfield-label">' . $display .'</label><textarea class="mdui-textfield-input" type="text" name="' . $name . '"/>' . $userOption . '</textarea></div>';
         $string .= ($description !== NULL) ? $description . "<br>" : NULL;
+        if ($default === NULL) {
+            $default = '';
+        }
+        if ($display === NULL) {
+            $display = '';
+        }
+        if ($description === NULL) {
+            $description = '';
+        }
         $$name = new Typecho_Widget_Helper_Form_Element_Text($name, null, _t($default), _t($display), _t($description));
         $this->form->addInput($$name);
         return $string;
@@ -91,6 +106,12 @@ class Render {
             $string .= '<li><label class="mdui-checkbox"><input type="checkbox" name="' . $name . '[]" value="' . $option . '" ' . $checked . '/><i class="mdui-checkbox-icon"></i>' . $value . '</label></li>';
         }
         $string .= "</ul>";
+        if ($display === NULL) {
+            $display = '';
+        }
+        if ($description === NULL) {
+            $description = '';
+        }
         $$name = new Typecho_Widget_Helper_Form_Element_Checkbox($name, $options, $default, _t($display), _t($description));
         $this->form->addInput($$name->multiMode());
         return $string;

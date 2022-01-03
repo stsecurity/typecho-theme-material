@@ -37,7 +37,7 @@
         </div>
 
         <!-- Comment actions -->
-        <nav class="comment__actions">
+        <nav id="<?php $comments->theId(); ?>" class="comment__actions">
             <!-- reply -->
             <?php $comments->reply('<button id="comment-reply-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
             <i class="material-icons" role="presentation">forum</i>
@@ -56,6 +56,7 @@
                     <li class="mdl-menu__item">分享到 Twitter</li>
                 </a>
             </ul>
+            
         </nav>
 
         <!-- Comment answers -->
@@ -163,7 +164,11 @@
                     <button id="comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
                     </button>'); ?>
-
+                    <!-- cancel reply -->
+                    <?php $comments->cancelReply('<button id="cancel-comment-button" class="comment-button mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">clear</i>
+                    <span class="visuallyhidden">cancel comment</span>
+                    </button>'); ?>
                 </form>
             </div>
 
