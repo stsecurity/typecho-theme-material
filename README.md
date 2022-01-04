@@ -1,6 +1,6 @@
 # Material with small fixes
 
-自用主题，包含一些修修补补。目前使用的是 Typecho 开发版 1.2，PHP7.4，mariadb
+自用主题，包含一些修修补补。目前使用的是 Typecho 开发版 1.2，PHP 7.4，mariadb 10.6.5
 
 [我的 Typecho 地址](https://blog.stsecurity.moe)
 
