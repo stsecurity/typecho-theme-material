@@ -1,3 +1,22 @@
+# Material with small fixes
+
+自用主题，包含一些修修补补。目前使用的是 Typecho 开发版 1.2，PHP7.4，mariadb
+
+[我的 Typecho 地址](https://blog.stsecurity.moe)
+
+## 本 fork 包含的功能
+
+- [SimpleCommentCaptcha](https://github.com/Quarkay/Typecho-SimpleCommentCaptcha)支持（依旧需要安装该插件）
+- 回复评论时可以取消回复
+
+## 本 fork 包含的 bug fix
+
+- 修复回复评论时文本框不显示问题
+
+## 以下是原 README
+
+---
+
 # Material 原质
 
 > 原之质，物之渊
@@ -42,10 +61,10 @@ Experience the Material theme in live: [typecho-theme-material Demo](https://blo
 - 在 [Release](https://github.com/idawnlight/typecho-theme-material/releases) 中下载最新版本，大多数情况下更新可直接覆盖，部分设置需手动启用
 - 在“设置外观”中打造一个属于你自己的博客
 - 关于文章缩略图
-	- 自定义字段的 “图片地址” 优先级最高，若未设定则默认为文章内第一张图片（可关闭）
-	- 缩略图支持 Markdown 格式, HTML 格式以及附件形式, Markdown 格式为 `![图片描述](图片链接)` 。
+  - 自定义字段的 “图片地址” 优先级最高，若未设定则默认为文章内第一张图片（可关闭）
+  - 缩略图支持 Markdown 格式, HTML 格式以及附件形式, Markdown 格式为 `![图片描述](图片链接)` 。
 - 首页文章概览默认最大输出 80 个字符, 可手动添加截断符 `<!--more-->` 控制输出
-- 创建友情链接页, 需安装此友情链接插件  [typecho-links-material](https://github.com/idawnlight/typecho-links-material)，并手动创建新页面，选择模板为“友情链接”
+- 创建友情链接页, 需安装此友情链接插件 [typecho-links-material](https://github.com/idawnlight/typecho-links-material)，并手动创建新页面，选择模板为“友情链接”
 
 ## Contributing 贡献
 
