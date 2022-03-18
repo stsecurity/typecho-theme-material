@@ -2,6 +2,13 @@
 <?php function threadedComments($comments, $options)
 {
     $commentClass = '';
+        if ($comments->authorId) {
+        if ($comments->authorId == $comments->ownerId) {
+            $commentClass .= ' comment-by-author';  //如果是文章作者的评论添加 .comment-by-author 样式
+        } else {
+            $commentClass .= ' comment-by-user';  //如果是评论作者的添加 .comment-by-user 样式
+        }
+    } 
     $commentLevelClass = $comments->_levels > 0 ? ' comment-child' : ' comment-parent';  //评论层数大于0为子级，否则是父级
     ?>
     <div id="li-<?php $comments->theId(); ?>" class="comment mdl-color-text--grey-700 comment-body<?php
@@ -39,10 +46,15 @@
         <!-- Comment actions -->
         <nav id="<?php $comments->theId(); ?>" class="comment__actions">
             <!-- reply -->
-            <?php $comments->reply('<button id="comment-reply-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">forum</i>
-            <span class="visuallyhidden">reply comment</span>
-            </button>'); ?>
+            <?php $comments->reply('
+                    <button id="comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons" role="presentation">forum</i><span class="visuallyhidden">add comment</span>
+                    </button>'); ?>
+            <?php $comments->cancelReply('
+                    <button id="cancel-comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">clear</i>
+                    <span class="visuallyhidden">cancel comment</span>
+                    </button>'); ?>
             <!-- share -->
             <button id="comment-share-<?php $comments->theId(); ?>-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                 <i class="material-icons" role="presentation">share</i>
@@ -88,7 +100,7 @@
             <div id="<?php $this->respondId(); ?>" class="respond">
 
                 <!-- Input form start -->
-                <form method="post" action="<?php $this->commentUrl() ?>">
+                <form method="post" action="<?php $this->commentUrl(); ?>">
 
                     <!-- If user has login -->
                     <?php if ($this->user->hasLogin()): ?>
@@ -159,11 +171,11 @@
                     </div>
 
                     <!-- Submit comment content button -->
-                    <?php SimpleCommentCaptcha_Plugin::outputSimpleCommentCaptchaField(); ?> <!-- SimpleCommentCaptcha -->
-                    <?php $comments->reply('
-                    <button id="comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                        <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
-                    </button>'); ?>
+                    <?php SimpleCommentCaptcha_Plugin::outputSimpleCommentCaptchaField(); ?>
+                    <button type="submit" id="comment-reply-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">check</i>
+                    <span class="visuallyhidden">reply comment</span>
+                    </button>
                     <!-- cancel reply -->
                     <?php $comments->cancelReply('<button id="cancel-comment-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons" role="presentation">clear</i>
