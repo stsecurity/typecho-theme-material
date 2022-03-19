@@ -242,14 +242,16 @@ function showThumbnail($widget)
 function randomThumbnail()
 {
     static $Last_Pic_Index = 0;
-    $rand = rand(1, getThemeOptions('RandomPicAmnt'));
-    $result = getThemeFile('img/random/material-' . $rand . '.png');
+    $directory = 'img/random/';
+    $images = glob('/var/www/html/usr/themes/Material/' . $directory . '*.{jpg,JPG,jpeg,JPEG,png,PNG}', GLOB_BRACE);
+    $rand = rand(0, count($images) - 1);
     if(getThemeOptions('RandomPicAmnt') > 1){
         if($Last_Pic_Index == $rand){
             return randomThumbnail();
         }
         $Last_Pic_Index = $rand;
     }
+    $result = getThemeFile($directory . basename($images[$rand]));
     return $result;
 }
 
