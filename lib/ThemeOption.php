@@ -183,8 +183,8 @@ function themeConfig($form) {
                 $Render->panel("item", "缩略图为纯色时的颜色", NULL,
                     $Render->input("TitleColor", "缩略图为纯色时的颜色", "缩略图为纯色时的颜色", "#FFF")
                 ).
-                $Render->panel("item", "随机缩略图数量", NULL,
-                    $Render->input("RandomPicAmnt", "随机缩略图数量", "img/random 图片的数量，以 material- 开头", 19)
+                $Render->panel("item", "随机图路径", NULL,
+                    $Render->input("RandomPicPath", "Material文件夹内随机图路径", "默认img/random/", img/random/)
                 )
             ).
             $Render->panel("item", "主题颜色", NULL,
