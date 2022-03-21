@@ -454,4 +454,82 @@ function themeConfig($form)
 </div>
         ')
     );
+    $backupmenu = '<form class="backup" action="" method="post" style="display:block !important">
+                <div class="mdui-panel mdui-panel-gapless">
+                <div class="mdui-panel-item">
+                <div class="mdui-panel-item-header">主题备份
+                <input type="submit" name="backup" class="mdui-btn mdui-ripple" value="备份主题数据" />&nbsp;&nbsp;<input type="submit" name="backup" class="mdui-btn mdui-ripple" value="还原主题数据" />&nbsp;&nbsp;<input type="submit" name="backup" class="mdui-btn mdui-ripple" value="删除备份数据" />
+                </div></div></div></form>';
+    function backup($backupmenu)
+    {
+        $db = Typecho_Db::get();
+        $sjdq = $db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Material'));
+        $ysj = $sjdq['value'];
+        if (isset($_POST['backup'])) {
+            if ($_POST["backup"] == "备份主题数据") {
+                if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Material-Backup'))) {
+                    $update = $db->update('table.options')->rows(array('value' => $ysj))->where('name = ?', 'theme:Material-Backup');
+                    $updateRows = $db->query($update);
+                    echo '<script>alert("备份已更新")</script>' . $backupmenu . backupinfo();
+                    unset($_POST);
+                    exit;
+                } else {
+                    if ($ysj) {
+                        $insert = $db->insert('table.options')
+                            ->rows(array('name' => 'theme:Material-Backup', 'user' => '0', 'value' => $ysj));
+                        $insertId = $db->query($insert);
+                        echo '<script>alert("备份已添加")</script>' . $backupmenu . backupinfo();
+                        unset($_POST);
+                        exit;
+                    }
+                }
+            }
+            if ($_POST["backup"] == "还原主题数据") {
+                if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Material-Backup'))) {
+                    $sjdub = $db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Material-Backup'));
+                    $bsj = $sjdub['value'];
+                    $update = $db->update('table.options')->rows(array('value' => $bsj))->where('name = ?', 'theme:Material');
+                    $updateRows = $db->query($update);
+                    echo '<script>alert("备份已恢复")</script>' . $backupmenu . backupinfo();
+                    unset($_POST);
+                    exit;
+                } else {
+                    echo '<script>alert("无备份")</script>' . $backupmenu . backupinfo();
+                    unset($_POST);
+                    exit;
+                }
+            }
+            if ($_POST["backup"] == "删除备份数据") {
+                if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Material-Backup'))) {
+                    $delete = $db->delete('table.options')->where('name = ?', 'theme:Material-Backup');
+                    $deletedRows = $db->query($delete);
+                    echo '<script>alert("删除成功")</script>' . $backupmenu . backupinfo();
+                    unset($_POST);
+                    exit;
+                } else {
+                    echo '<script>alert("无备份")</script>' . $backupmenu . backupinfo();
+                    unset($_POST);
+                    exit;
+                }
+            }
+        }
+    }
+    function backupinfo()
+    {
+        $db = Typecho_Db::get();
+        $backupinfo = '';
+        if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Material-Backup'))) {
+            $backupinfo = '
+                        <div class="mdui-panel mdui-panel-gapless">
+                        <div class="mdui-panel-item">
+                        <div class="mdui-panel-item-header" style="color: green !important">主题已备份</div></div></div>';
+        } else {
+            $backupinfo = '
+                        <div class="mdui-panel mdui-panel-gapless">
+                        <div class="mdui-panel-item">
+                        <div class="mdui-panel-item-header" style="color: red !important">主题未备份</div></div></div>';
+        }
+        return $backupinfo;
+    }
+    echo $backupmenu . backupinfo() . backup($backupmenu);
 }
