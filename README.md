@@ -8,6 +8,8 @@
 
 - [SimpleCommentCaptcha](https://github.com/Quarkay/Typecho-SimpleCommentCaptcha)支持（依旧需要安装该插件）
 - 回复评论时可以取消回复
+- 备份及恢复主题设置
+- 随机图不再需要填入张数，可自定义随机图路径（Material 文件夹内）
 
 ## 本 fork 包含的 bug fix
 
