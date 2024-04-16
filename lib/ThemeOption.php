@@ -22,7 +22,7 @@ function themeConfig($form)
         <span style="display: block; margin-bottom: 10px; margin-top: 10px; font-size: 16px;">感谢您使用 Material 主题</span>
         <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/stsecurity/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
         <a href="mailto:idawn@live.com" >帮助&支持</a> &nbsp;
-        <a href="https://github.com/idawnlight/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script></p>', true, false) .
+        <a href="https://github.com/stsecurity/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script></p>', true, false) .
             $Render->panel(
                 "item",
                 "功能设定",
@@ -343,9 +343,9 @@ function themeConfig($form)
                             ) .
                             $Render->panel(
                                 "item",
-                                "随机缩略图数量",
+                                "随机缩略图路径",
                                 NULL,
-                                $Render->input("RandomPicAmnt", "随机缩略图数量", "img/random 图片的数量，以 material- 开头", 19)
+                                $Render->input("RandomPicPath", "Material文件夹内随机图路径", "默认img/random/", 'img/random/')
                             )
                     ) .
                     $Render->panel(
