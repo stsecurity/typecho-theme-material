@@ -22,7 +22,7 @@ function themeConfig($form)
         <span style="display: block; margin-bottom: 10px; margin-top: 10px; font-size: 16px;">感谢您使用 Material 主题</span>
         <span style="margin-bottom:10px;display:block">请关注 <a href="https://github.com/stsecurity/typecho-theme-material" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">Github</a> 以获得<span style="color:#df3827;font-weight:bold;">最新版本支持</span></span>
         <a href="mailto:idawn@live.com" >帮助&支持</a> &nbsp;
-        <a href="https://github.com/stsecurity/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script></p>', true, false) .
+        <a href="https://github.com/idawnlight/typecho-theme-material/issues" target="_blank">建议&反馈</a><br><br>当前版本 ' . MATERIAL_VERSION . '<span id="update"></span><script type="text/javascript" src="https://api.lim-light.com/update/material.php?version=' . MATERIAL_VERSION . '&encode=js-html&front=，" async defer></script></p>', true, false) .
             $Render->panel(
                 "item",
                 "功能设定",
@@ -34,7 +34,7 @@ function themeConfig($form)
                     $Render->checkbox(
                         "switch",
                         "功能开关",
-                        NULL,
+                        "",
                         [
                             'ShowPixiv' => '侧边栏显示 mokeyjay 的 pixiv 挂件',
                             'SmoothScroll' => '平滑滚动效果',
@@ -91,7 +91,7 @@ function themeConfig($form)
                         $Render->radio(
                             "qrcode",
                             "文章二维码",
-                            NULL,
+                            "",
                             [
                                 0 => "LWL12 ( api.lwl12.com )",
                                 1 => "journey.ad ( api.imjad.cn )",
@@ -106,13 +106,13 @@ function themeConfig($form)
                         "item",
                         "搜索设置",
                         NULL,
-                        $Render->radio("searchis", "搜索设置", NULL, [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
+                        $Render->radio("searchis", "搜索设置", "", [0 => "Typecho 原生搜索", 1 => "本地搜索（即时搜索）"], 1)
                     ) .
                     $Render->panel(
                         "item",
                         "CDN 类型",
                         NULL,
-                        $Render->radio("CDNType", "CDN 类型", NULL, [0 => '不启用 CDN', 1 => 'jsDelivr (cdn.jsdelivr.net)', 3 => 'ElemeCDN (shadow.elemecdn.com)', 2 => '自定义'], 0) .
+                        $Render->radio("CDNType", "CDN 类型", "", [0 => '不启用 CDN', 1 => 'jsDelivr (cdn.jsdelivr.net)', 3 => 'ElemeCDN (shadow.elemecdn.com)', 2 => '自定义'], 0) .
                             $Render->input("CDNURL", "CDN 地址", "仅在使用自定义 CDN 时需要填写<br>创建一个文件夹，把 <b>css, fonts, img, js</b> 文件夹放进去，上传到到你的 CDN 储存空间根目录下<br />
                 填入你的 CDN 地址, 如 <b>https://cdn.example.com/MaterialCDN</b> 或 <b>https://root.example.com</b>")
                     ) .
@@ -123,7 +123,7 @@ function themeConfig($form)
                         $Render->radio(
                             "language",
                             "语言",
-                            NULL,
+                            "",
                             [
                                 "ar" => "العَرَبِيَّة",
                                 "de" => "Deutsch",
@@ -196,7 +196,7 @@ function themeConfig($form)
                         "item",
                         "Footer 文字",
                         NULL,
-                        $Render->input("footer_text", "Footer 文字", "你可以在页面的 Footer 指定你想显示的文字，支持 HTML 标签；默认为空。 比如，备案号可以这样设定。<br><b>&#60;&#97;&#32;&#104;&#114;&#101;&#102;&#61;&#34;&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#119;&#119;&#119;&#46;&#109;&#105;&#105;&#116;&#98;&#101;&#105;&#97;&#110;&#46;&#103;&#111;&#118;&#46;&#99;&#110;&#34;&#32;&#114;&#101;&#108;&#61;&#34;&#110;&#111;&#102;&#111;&#108;&#108;&#111;&#119;&#34;&#62;&#26576;&#73;&#67;&#80;&#22791;&#120;&#120;&#120;&#120;&#120;&#120;&#120;&#120;&#21495;&#45;&#120;&#60;&#47;&#97;&#62;</b>", NULL)
+                        $Render->input("footer_text", "Footer 文字", "你可以在页面的 Footer 指定你想显示的文字，支持 HTML 标签；默认为空。 比如，备案号可以这样设定。<br><b>&lt;a href=\"https://beian.miit.gov.cn\" rel=\"nofollow\"&gt;某ICP备xxxxxxxxxx号-x&lt;/a&gt;</b>", NULL)
                     ) .
                     $Render->panel(
                         "item",
@@ -205,7 +205,7 @@ function themeConfig($form)
                         $Render->radio(
                             "RobotoSource",
                             "Roboto 字体使用来源",
-                            NULL,
+                            "",
                             [
                                 0 => "调用 Google fonts (使用 https://lug.ustc.edu.cn 镜像)",
                                 1 => "调用 Google fonts (使用 https://fonts.loli.net 镜像)",
@@ -219,13 +219,13 @@ function themeConfig($form)
                         "item",
                         "网站统计代码",
                         NULL,
-                        $Render->textarea("analysis", "网站统计代码", "填入如 Google Analysis 的第三方统计代码", NULL)
+                        $Render->textarea("analysis", "网站统计代码", "填入如 Google Analysis 的第三方统计代码", "")
                     ) .
                     $Render->panel(
                         "item",
                         "DNS 预加载",
                         NULL,
-                        $Render->textarea("DNSPrefetch", "DNS 预加载", "一行一个，如 <b>//dns.example.com</b>", NULL)
+                        $Render->textarea("DNSPrefetch", "DNS 预加载", "一行一个，如 <b>//dns.example.com</b>", "")
                     )
             ) .
             $Render->panel(
@@ -267,7 +267,7 @@ function themeConfig($form)
                             $Render->radio(
                                 "BGtype",
                                 "背景类型",
-                                NULL,
+                                "",
                                 [
                                     0 => '纯色背景',
                                     1 => '图片背景',
@@ -289,7 +289,7 @@ function themeConfig($form)
                                 $Render->radio(
                                     "GradientType",
                                     "背景渐变",
-                                    NULL,
+                                    "",
                                     [
                                         '0' => _t('Aerinite'),
                                         '1' => _t('Ethereal'),
@@ -317,7 +317,7 @@ function themeConfig($form)
                             $Render->radio(
                                 "ThumbnailOption",
                                 "缩略图显示效果",
-                                NULL,
+                                "",
                                 [
                                     1 => "显示文章内第一张图片或指定的图片 (若无图片则显示随机图)",
                                     2 => "只显示纯色",
@@ -328,7 +328,7 @@ function themeConfig($form)
                                 $Render->radio(
                                     'FetchFirstImageRegex',
                                     '通过正则匹配文章内图片（仅当选择第一项时有效）',
-                                    null,
+                                    "",
                                     [
                                         0 => '开启',
                                         1 => '关闭'
@@ -343,9 +343,9 @@ function themeConfig($form)
                             ) .
                             $Render->panel(
                                 "item",
-                                "随机图路径",
+                                "随机缩略图数量",
                                 NULL,
-                                $Render->input("RandomPicPath", "Material文件夹内随机图路径", "默认img/random/", 'img/random/')
+                                $Render->input("RandomPicAmnt", "随机缩略图数量", "img/random 图片的数量，以 material- 开头", 19)
                             )
                     ) .
                     $Render->panel(
@@ -415,7 +415,7 @@ function themeConfig($form)
                         $Render->radio(
                             "logosize",
                             "首页顶部右边 LOGO 图片大小",
-                            NULL,
+                            "",
                             [
                                 0 => "标准",
                                 1 => "更大"
