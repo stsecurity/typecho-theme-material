@@ -158,6 +158,7 @@
                 </div>
 
                 <!-- Sidebar bottom text -->
+                <div class="sidebar-divider"></div>
                 <a href="https://github.com/stsecurity/typecho-theme-material" target="_blank" class="sidebar-footer-text-a">
                     <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
                         <?php lang("misc.theme") ?> - Material
