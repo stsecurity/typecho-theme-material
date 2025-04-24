@@ -10,6 +10,7 @@
         </button>
 
         <!-- Post module -->
+        <div class="min-height-for-footer">
         <div class="material-post_container">
             <div class="material-post mdl-grid">
 
@@ -128,6 +129,7 @@
                         </button>', 'tagClass' => 'prev-content')); ?>
                 </nav>
             </div>
-
+            </div>
+        </div>
             <?php $this->need('sidebar.php'); ?>
             <?php $this->need('footer.php'); ?>
