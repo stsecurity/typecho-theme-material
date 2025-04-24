@@ -9,7 +9,7 @@ $this->need('header.php'); ?>
 
 <style>
     .md-links {
-        display: flex;
+        display: grid;
         text-align: center;
         overflow: auto;
         padding: 0;
@@ -51,7 +51,7 @@ $this->need('header.php'); ?>
     .md-links-item {
         background: #fff;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        height: 72px;
+        height: 90px;
         line-height: 15px;
         margin: 20px 10px;
         padding: 0px 0px;
@@ -64,7 +64,7 @@ $this->need('header.php'); ?>
     }
 
     .md-links li {
-        width: 300px;
+        width: 30em;
         float: left;
         list-style: none;
     }
@@ -215,7 +215,7 @@ $this->need('header.php'); ?>
                                 <?php Links_Plugin::output('
                 <a href="{url}" title="{title}" target="_blank">
                     <li class="md-links-item">
-                        <img src="{image}" alt="{name}" height="72px"/>
+                        <img src="{image}" alt="{name}" height="90px"/>
                         <span  class="md-links-title">{name}</span><br />
                         <span>{description}</span>
                     </li>
