@@ -9,7 +9,7 @@ $this->need('header.php'); ?>
 
 <style>
     .md-links {
-        min-height: calc(100% - 120px - 5pc - 6em);
+        display: flex;
         text-align: center;
         overflow: auto;
         padding: 0;
