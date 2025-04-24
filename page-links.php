@@ -132,9 +132,9 @@ $this->need('header.php'); ?>
                             <div>
                                 <!-- Author name -->
                                 <strong><?php $this->author(); ?></strong>
-                                <!-- Article date -->
+                                <!-- Articel date -->
                                 <span>
-                                    <?php if ($this->options->langis == '0'): ?>
+                                    <?php if ($this->options->language != 'zh-CN'): ?>
                                         <?php $this->date('F j, Y'); ?>
                                     <?php else: ?>
                                         <?php $this->dateWord(); ?>
@@ -171,7 +171,7 @@ $this->need('header.php'); ?>
                             </button>
                             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
                                 <?php if ($this->user->hasLogin()): ?>
-                                    <a class="md-menu-list-a" target="_blank" href="<?php $this->options->adminUrl(); ?>write-page.php?cid=<?php echo $this->cid; ?>" target="_blank">
+                                    <a class="md-menu-list-a" href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid; ?>" target="_blank">
                                         <li class="mdl-menu__item">编辑</li>
                                     </a>
                                 <?php endif; ?>
@@ -198,7 +198,7 @@ $this->need('header.php'); ?>
                             </ul>
                         </div>
 
-                        <!-- Article content -->
+                        <!-- Articel content -->
                         <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
                             <?php
                             if (!empty($this->options->switch) && in_array('PanguPHP', $this->options->switch)) {
@@ -207,6 +207,15 @@ $this->need('header.php'); ?>
                                 $this->content();
                             }
                             ?>
+                            <?php if (!empty($this->options->post_license)): ?>
+                                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                                    <p>
+                                        <strong><?php lang("post.permalink");
+                                                echo "<a href=\"" . $this->permalink . "\">" . $this->permalink . "</a>"; ?></strong><br>
+                                        <strong><?php $this->options->post_license(); ?></strong>
+                                    </p>
+                                </blockquote>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Links -->
@@ -226,6 +235,7 @@ $this->need('header.php'); ?>
 
                         <!-- Article comments -->
                         <?php $this->need('comments.php'); ?>
+
                     </div>
 
                     <!-- theNext thePrev button -->
@@ -233,14 +243,15 @@ $this->need('header.php'); ?>
                         <?php $this->theNext('%s', null, array('title' => '
                         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                             <i class="material-icons">arrow_back</i>
-                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Newer', 'tagClass' => 'prev-content')); ?>
+                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . lang("post.newer", false) . '', 'tagClass' => 'prev-content')); ?>
                         <div class="section-spacer"></div>
-                        <?php $this->thePrev('%s', null, array('title' => 'Older&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                        <?php $this->thePrev('%s', null, array('title' =>  lang("post.older", false) . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                             <i class="material-icons">arrow_forward</i>
                         </button>', 'tagClass' => 'prev-content')); ?>
                     </nav>
                 </div>
             </div>
         </div>
+
         <?php $this->need('sidebar.php'); ?>
         <?php $this->need('footer.php'); ?>
