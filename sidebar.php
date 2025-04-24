@@ -150,7 +150,7 @@
 
                 <!-- Sidebar Footer -->
                 <div class="sidebar-divider"></div>
-                <div>
+                <div class="nav sidebar-nav">
                     <?php $this->links("SHOW_MIX"); ?>
                 </div>
 
