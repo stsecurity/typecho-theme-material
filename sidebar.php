@@ -150,7 +150,7 @@
 
                 <!-- Sidebar Footer -->
                 <div class="sidebar-divider"></div>
-                <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+                <div>
                     <?php $this->links("SHOW_MIX"); ?>
                 </div>
 
